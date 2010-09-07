@@ -1,0 +1,56 @@
+# As found on http://www.sjaak.org/articles/1-bash-profile
+# 
+if [ -f ~/.profile ]; then
+    . ~/.profile
+fi
+if [ -f /opt/local/etc/bash_completion ]; then
+    . /opt/local/etc/bash_completion
+fi
+
+if [ -d ~/bin ]; then
+      export PATH=:~/bin:$PATH
+fi
+
+#export MAVEN_OPTS='-Xdebug -Xnoagent -Xrunjdwp:transport=dt_socket,address=4000,server=y,suspend=n'
+export MAVEN_OPTS='-Xmx512M -XX:MaxPermSize=512m'
+
+export LANG=en_US.UTF-8
+
+export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
+export LSCOLORS=DxGxcxdxCxegedabagacad
+export CLICOLOR=1
+export EDITOR=/usr/bin/vim
+export VISUAL=/usr/bin/vim
+
+export PS1='[33[01;32m]u@h[33[00m]:[33[01;34m]w[33[00m] $ '
+export PS2='[33[01;33m]more>[33[00m] '
+
+export HISTCONTROL=ignoredups
+export HISTFILESIZE=10000000
+shopt -s checkwinsize
+shopt -s autocd
+shopt -s cdspell
+shopt -s histappend
+shopt -s no_empty_cmd_completion
+
+
+bind "set show-all-if-ambiguous On"
+bind "set completion-ignore-case on"
+bind "set bell-style none"
+
+function p {
+        awk ' { print $'$1' } '
+}
+
+function p1 {
+ p 1
+}
+
+function p2 {
+ p 2
+}
+
+alias esed='sed -E'
+
+
+export PAGER='less -S'
