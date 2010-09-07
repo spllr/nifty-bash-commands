@@ -5,3 +5,31 @@ Feel free to modify/clone/etc. them.
 If they have rights at all, I probably do not own them. If you are the author
 of any of these commands and wish them to be removed, or credits added to
 them, please contact me.
+
+apt-history [match]
+	Shows you your apt history.
+	
+bigfiles [dir]
+	Lists all files in the PWD or in the given dir, sorted by size.
+	
+ds [dir]
+	Recursively scans directories in the PWD or the given directory,
+	and calculates the size of the directories. Shows a list sorted by
+	biggest directory.
+
+define <term>
+	Looks up the definition of the given term on Google.
+	
+extract <archive>
+	Extracts the given file. Automatically detects the type of archive,
+	and executes the appropriate command.
+	
+pack <archive> <file or directory>
+	Archives the given file or directory into an archive. Automatically
+	detects the type of archive, and executes the appropriate command.
+	
+httpheaders <url>
+	Calls <url> and returns it's HTTP headers.
+
+svnaddall
+	Recursively adds files to the SVN repository.
