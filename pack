@@ -1,0 +1,25 @@
+#!/bin/bash
+if [[ -f $2 && -n $1 ]]; then
+    case $1 in
+	*.tar.bz2)   tar -cjf "$1" "$2"    ;;
+	*.tar.gz)    tar -pczf $1 $2       ;;
+	*.rar)       rar a $1 $2           ;;
+	*.tar)       tar -cf $1 $2         ;;
+	*.tbz2)      tar -jcvf $1 $2       ;;
+	*.tgz)       tar -zcvf $1 $2       ;;
+	*.zip)       zip $1 $2             ;;
+	*.7z)        7z a $1 $2            ;;
+	*)           echo "don't know how to pack '$1'..." ;;
+    esac
+else
+    echo "Usage: pack <archive> <dir/file>"
+    echo "Automagically detects what kind of archive you want to use."
+    echo "Supports:"
+    echo -e "\t.tar.gz"
+    echo -e "\t.rar"
+    echo -e "\t.tar"
+    echo -e "\t.tbz2"
+    echo -e "\t.tgz"
+    echo -e "\t.zip"
+    echo -e "\t.7z"
+fi

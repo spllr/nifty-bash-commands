@@ -1,0 +1,2 @@
+#!/bin/bash
+/usr/bin/curl -m2 -I -L -s -S $@ ;
