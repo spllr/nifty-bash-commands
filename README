@@ -33,3 +33,7 @@ httpheaders <url>
 
 svnaddall
 	Recursively adds files to the SVN repository.
+
+findin
+	Recursively search files for lines matching the given argument.
+	Run it without arguments for more info.
