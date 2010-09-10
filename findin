@@ -1,0 +1,51 @@
+#!/bin/bash
+
+function usage() {
+        echo "Recursively search files in the given directory (or CWD) for a a string."
+        echo ""
+
+        echo -e "Usage:\tfindin string"
+        echo -e "\tfindin [options] string"
+        echo ""
+
+        echo -e "\t-d dir, \tThe directory to search"
+        echo -e "\t-t wc, \t\tThe filetype to search (wildcard match, e.g. *.html)"
+}
+
+
+while getopts "d:t:?:" o ; do  
+        case $o in  
+                d ) DIR=$OPTARG;;  
+                t ) TYPE=$OPTARG;;
+		? ) STR=$OPTARG;;
+        esac  
+done  
+
+if [[ -z $TYPE  ]]; then
+        NAMEOPT=""
+	TYPEINFO="any"
+else
+	TYPEINFO="$TYPE"
+	NAMEOPT="-name $TYPE"
+fi
+
+if [[ -z $DIR ]]; then
+	DIR="."
+	DIRINFO="current directory"
+else
+	DIRINFO="$DIR"
+fi
+
+# String to match variable
+shift $((OPTIND-1))
+STR="$@"
+
+if [[ -z $STR ]]; then
+	usage;
+	exit
+fi
+
+echo "Recursively searching $TYPEINFO files in $DIRINFO for '$STR'"
+
+find $DIR $NAMEOPT -exec grep -i -H -n "$STR" {} \;
+
